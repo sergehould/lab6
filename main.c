@@ -25,9 +25,10 @@
       
  * * REVISION HISTORY:
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Author        	Date      	Comments on this revision
+ * Author        	Date                Comments on this revision
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Serge Hould      May 24 2017 v1.0     
+ * Serge Hould      May 24 2017 v1.0    The team.X project is pushed to https://github.com/advanced-programming/lab4-marie-sylavain
+ *                                      Team member will fork this project.
  *
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */

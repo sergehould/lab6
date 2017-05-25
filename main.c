@@ -1,5 +1,5 @@
 /**
- *  FileName:     main.c form team project including student_1 and  student_2.
+ *  FileName:     main.c for student_2 PWM and timer development.
  *	
  *	Name: Embedded application design,  Lab 6
  *
@@ -25,36 +25,84 @@
       
  * * REVISION HISTORY:
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Author        	Date                Comments on this revision
+ * Author        	Date      	Comments on this revision   
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Serge Hould      May 24 2017 v1.0    The team.X project is pushed to https://github.com/advanced-programming/lab4-marie-sylavain
- *                                      Team member will fork this project.
+ * Serge Hould      May 19 2017 v1.0       
  *
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
- 
+
+	TODO:
+		
+*/
 //#include "..\common\pmp_lcd.h"
+
 #include "include/initBoard.h"
 #include "include/public.h"
 #include "common/GenericTypeDefs.h"
-
+#include "common/tickFast.h"
 #include <stdio.h>
-
-
-// Local global
+//#define     PROFILE 
+//#define   TIMER_PROFILE 
+#define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
 
 //global and broadcast
-display_type    display={1,0,100,400,0}; 
+display_type    display={1,0,100,400,0};
+
 unsigned char sinus[RESOL], sawtooth[RESOL], square[RESOL];
 
+void _ISR_NO_PSV _T3Interrupt( void )
+{
+       // clear interrupt flag and exit
+    _T3IF = 0;
+} // T3 Interrupt
+
+
+/* 	Timer 2 ISR
+	This ISR is called at a frequency of ...
+*/
+
+void _ISR_NO_PSV _T2Interrupt( void )
+{
+	static int sample=0;
+     /* Task profiling using a timer */
+  //  profile.start=TickGet();
+	  
+        switch(display.wav) {
+        case 0:
+             OC1RS = square[ sample]; 
+             break;
+        case 1:
+             OC1RS = sawtooth[sample];
+             break;
+        case 2:
+             OC1RS = sinus[ sample];
+                     break;
+        }
+        sample++;
+        sample = (sample>=RESOL) ? 0 : sample;
+    
+	_T2IF = 0; // Clear Timer 2 interrupt flag
+}
+
+
+    
 int main( void)
 {
 	OSCILLATOR_Initialize();
+	initWave(RESOL);
+    initTimer3();
+	initTimer2();
+	initOC();
     initIO();
-	
-    while(1){
-
-    }// end while(1))
+	TickInit();			// initializes the tick function
+    
+    // main loop
+    while( 1){
+       //displayTask();
+      // decodeRepeatTask();
+     //  countSecTask();
+       
+	}
 
 }// main
 

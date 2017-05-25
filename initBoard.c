@@ -1,6 +1,6 @@
 #include "include/initBoard.h"
 #include "include/public.h"
-
+//added by syl
 // CONFIG2
 #pragma config POSCMOD = NONE    // Primary Oscillator Select->Primary oscillator disabled
 #pragma config OSCIOFNC = OFF    // Primary Oscillator Output Function->OSC2/CLKO/RC15 functions as CLKO (FOSC/2)

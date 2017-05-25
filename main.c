@@ -109,6 +109,8 @@ int main( void)
     int sol = add (1,2);
     // main loop
     while(1){
+        //Test
+        _LATAA0=1;
 
     }// end while(1))
 

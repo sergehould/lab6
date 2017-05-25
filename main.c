@@ -36,7 +36,7 @@
 //#include "..\common\pmp_lcd.h"
 #include "include/initBoard.h"
 #include "include/public.h"
-#include "../../common/GenericTypeDefs.h"
+#include "common/GenericTypeDefs.h"
 
 #include <stdio.h>
 

@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p24FJ128GA010 \
   -o \
-  dist/default/production/team.X.production.elf \
+  dist/default/production/lab6.X.production.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24E \
@@ -23,8 +23,8 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/main.o \
   build/default/production/initBoard.o \
-  build/default/production/_ext/1329223797/pmp_lcd.o \
-  build/default/production/_ext/1329223797/TickFast.o \
+  build/default/production/common/pmp_lcd.o \
+  build/default/production/common/TickFast.o \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ128GA010.gld.00 \
   --stack=16 \
@@ -38,7 +38,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/team.X.production.map \
+  -Map=dist/default/production/lab6.X.production.map \
   --report-mem \
   --memorysummary \
   dist/default/production/memoryfile.xml \
@@ -51,11 +51,11 @@ Command:
 Archive member included because of file (symbol)
 
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24F\libpPIC24Fxxx-elf.a(PMPClose.o)
-                              build/default/production/_ext/1329223797/pmp_lcd.o (_PMPClose)
+                              build/default/production/common/pmp_lcd.o (_PMPClose)
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24F\libpPIC24Fxxx-elf.a(PMPOpen.o)
-                              build/default/production/_ext/1329223797/pmp_lcd.o (_PMPOpen)
+                              build/default/production/common/pmp_lcd.o (_PMPOpen)
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24F\libpPIC24Fxxx-elf.a(PMPSetAddress.o)
-                              build/default/production/_ext/1329223797/pmp_lcd.o (_PMPSetAddress)
+                              build/default/production/common/pmp_lcd.o (_PMPSetAddress)
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
                               (__resetPRI)
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
@@ -63,7 +63,7 @@ c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(dat
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.a(crt_start_mode_normal.eo)
                               (__crt_start_mode_normal)
 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
-                              build/default/production/_ext/1329223797/TickFast.o (___udivdi3)
+                              build/default/production/common/TickFast.o (___udivdi3)
 
 
 xc16-ld 1.31 (A)
@@ -222,8 +222,8 @@ Linker script and memory map
 
 LOAD build/default/production/main.o
 LOAD build/default/production/initBoard.o
-LOAD build/default/production/_ext/1329223797/pmp_lcd.o
-LOAD build/default/production/_ext/1329223797/TickFast.o
+LOAD build/default/production/common/pmp_lcd.o
+LOAD build/default/production/common/TickFast.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24F\libpPIC24Fxxx-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libfx-elf.a
@@ -302,40 +302,40 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1591
+.debug_info       0x000000       0x15b5
  *(.debug_info)
- .debug_info      0x000000        0x269 build/default/production/main.o
- .debug_info      0x000269        0x622 build/default/production/initBoard.o
- .debug_info      0x00088b        0x400 build/default/production/_ext/1329223797/pmp_lcd.o
- .debug_info      0x000c8b        0x906 build/default/production/_ext/1329223797/TickFast.o
+ .debug_info      0x000000        0x275 build/default/production/main.o
+ .debug_info      0x000275        0x62e build/default/production/initBoard.o
+ .debug_info      0x0008a3        0x406 build/default/production/common/pmp_lcd.o
+ .debug_info      0x000ca9        0x90c build/default/production/common/TickFast.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x365
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x82 build/default/production/main.o
  .debug_abbrev    0x000082         0x9b build/default/production/initBoard.o
- .debug_abbrev    0x00011d         0xac build/default/production/_ext/1329223797/pmp_lcd.o
- .debug_abbrev    0x0001c9        0x19c build/default/production/_ext/1329223797/TickFast.o
+ .debug_abbrev    0x00011d         0xac build/default/production/common/pmp_lcd.o
+ .debug_abbrev    0x0001c9        0x19c build/default/production/common/TickFast.o
 
-.debug_line       0x000000        0x355
+.debug_line       0x000000        0x349
  *(.debug_line)
  .debug_line      0x000000         0x4a build/default/production/main.o
  .debug_line      0x00004a         0xf3 build/default/production/initBoard.o
- .debug_line      0x00013d        0x11a build/default/production/_ext/1329223797/pmp_lcd.o
- .debug_line      0x000257         0xfe build/default/production/_ext/1329223797/TickFast.o
+ .debug_line      0x00013d        0x114 build/default/production/common/pmp_lcd.o
+ .debug_line      0x000251         0xf8 build/default/production/common/TickFast.o
 
 .debug_frame      0x000000        0x2c0
  *(.debug_frame)
  .debug_frame     0x000000         0x30 build/default/production/main.o
  .debug_frame     0x000030         0x4c build/default/production/initBoard.o
- .debug_frame     0x00007c        0x164 build/default/production/_ext/1329223797/pmp_lcd.o
- .debug_frame     0x0001e0         0xe0 build/default/production/_ext/1329223797/TickFast.o
+ .debug_frame     0x00007c        0x164 build/default/production/common/pmp_lcd.o
+ .debug_frame     0x0001e0         0xe0 build/default/production/common/TickFast.o
 
 .debug_str        0x000000         0x4e
  *(.debug_str)
  .debug_str       0x000000         0x1e build/default/production/initBoard.o
- .debug_str       0x00001e          0xb build/default/production/_ext/1329223797/pmp_lcd.o
- .debug_str       0x000029         0x25 build/default/production/_ext/1329223797/TickFast.o
+ .debug_str       0x00001e          0xb build/default/production/common/pmp_lcd.o
+ .debug_str       0x000029         0x25 build/default/production/common/TickFast.o
 
 .debug_loc
  *(.debug_loc)
@@ -351,9 +351,9 @@ __CONFIG1
  .debug_pubnames
                   0x000049         0x37 build/default/production/initBoard.o
  .debug_pubnames
-                  0x000080         0xbb build/default/production/_ext/1329223797/pmp_lcd.o
+                  0x000080         0xbb build/default/production/common/pmp_lcd.o
  .debug_pubnames
-                  0x00013b         0x7e build/default/production/_ext/1329223797/TickFast.o
+                  0x00013b         0x7e build/default/production/common/TickFast.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -365,9 +365,9 @@ __CONFIG1
  .debug_aranges
                   0x000018         0x18 build/default/production/initBoard.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/_ext/1329223797/pmp_lcd.o
+                  0x000030         0x18 build/default/production/common/pmp_lcd.o
  .debug_aranges
-                  0x000048         0x18 build/default/production/_ext/1329223797/TickFast.o
+                  0x000048         0x18 build/default/production/common/TickFast.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -945,7 +945,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libc-elf.a
 END GROUP
-OUTPUT(dist/default/production/team.X.production.elf elf32-pic30)
+OUTPUT(dist/default/production/lab6.X.production.elf elf32-pic30)
 LOAD default_isr
 LOAD data_init
 
@@ -956,9 +956,9 @@ LOAD data_init
  .debug_pubtypes
                   0x000083         0x7b build/default/production/initBoard.o
  .debug_pubtypes
-                  0x0000fe         0x12 build/default/production/_ext/1329223797/pmp_lcd.o
+                  0x0000fe         0x12 build/default/production/common/pmp_lcd.o
  .debug_pubtypes
-                  0x000110         0xa4 build/default/production/_ext/1329223797/TickFast.o
+                  0x000110         0xa4 build/default/production/common/TickFast.o
 
 __c30_signature
                   0x0001b4         0x3c
@@ -967,9 +967,9 @@ __c30_signature
  __c30_signature
                   0x0001ba          0x6 build/default/production/initBoard.o
  __c30_signature
-                  0x0001c0          0x6 build/default/production/_ext/1329223797/pmp_lcd.o
+                  0x0001c0          0x6 build/default/production/common/pmp_lcd.o
  __c30_signature
-                  0x0001c6          0x6 build/default/production/_ext/1329223797/TickFast.o
+                  0x0001c6          0x6 build/default/production/common/TickFast.o
  __c30_signature
                   0x0001cc          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24F\libpPIC24Fxxx-elf.a(PMPClose.o)
  __c30_signature
@@ -984,9 +984,9 @@ __c30_signature
                   0x0001ea          0x6 c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libm-elf.a(divmoddi3.eo)
 
 .nbss               0x0800          0x8
- .nbss              0x0800          0x4 build/default/production/_ext/1329223797/pmp_lcd.o
+ .nbss              0x0800          0x4 build/default/production/common/pmp_lcd.o
                     0x0800                  __uLCDloops
- .nbss              0x0804          0x4 build/default/production/_ext/1329223797/TickFast.o
+ .nbss              0x0804          0x4 build/default/production/common/TickFast.o
 
 .bss                0x0808         0xc0
  .bss               0x0808         0xc0 build/default/production/main.o
@@ -999,7 +999,7 @@ __c30_signature
                     0x08c8                  _display
 
 .bss                0x08d2          0x6
- .bss               0x08d2          0x6 build/default/production/_ext/1329223797/TickFast.o
+ .bss               0x08d2          0x6 build/default/production/common/TickFast.o
 
 .config_JTAGEN    0x0157fe          0x2
  .config_JTAGEN
@@ -1011,10 +1011,10 @@ __c30_signature
 .ivt._T1Interrupt
                   0x00001a          0x2
  .ivt._T1Interrupt
-                  0x00001a          0x2 build/default/production/_ext/1329223797/TickFast.o
+                  0x00001a          0x2 build/default/production/common/TickFast.o
 
 .text             0x000512        0x3e6
- .text            0x000512        0x28e build/default/production/_ext/1329223797/pmp_lcd.o
+ .text            0x000512        0x28e build/default/production/common/pmp_lcd.o
                   0x000512                  _pmp_Init
                   0x00053e                  _LCDInit
                   0x0005da                  _LCDHome
@@ -1027,7 +1027,7 @@ __c30_signature
                   0x00071a                  _LCDPutString
                   0x000734                  _LCDPos2
                   0x00076a                  _LCDPos1
- .text            0x0007a0        0x126 build/default/production/_ext/1329223797/TickFast.o
+ .text            0x0007a0        0x126 build/default/production/common/TickFast.o
                   0x0007a0                  _TickInit
                   0x00081e                  _TickGet
                   0x00082a                  _TickGetDiv256

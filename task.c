@@ -9,6 +9,7 @@ extern unsigned char sinus[RESOL], sawtooth[RESOL], square[RESOL];
 
 long TickGet_ms(void){
 	return TickGet()/(TIMER_FREQ/1000);
+    // added
 
 }
 
@@ -18,6 +19,7 @@ void decodeRepeatTask(void) {
   static DWORD  delay =1000;             // for auto repeat initial delay
   static int    cnt=0;                   // for auto repeat count
   static char curPBs=0, memPBs=0;
+  // added
   static enum { SM_PBPoll =0, SM_Deb, SM_PBDecod,SM_FREQ, SM_WAV, SM_AMP, SM_PBRelease }state= 0;
 
 	switch(state){
@@ -30,6 +32,7 @@ void decodeRepeatTask(void) {
             if (curPBs != 0x0f){  //if (curPBs == 0x000fui)
                 state= SM_Deb;
                 lastTick= TickGet_ms(); 
+                // added
             }
 			break;
 		case SM_Deb:
@@ -47,6 +50,7 @@ void decodeRepeatTask(void) {
                 //Amp Up
                 case 0b0101:
                     state=SM_PBRelease;
+                    // added
                     if (amp<RESOL)amp++;
                     //initWave(amp);
                     //percent=(unsigned int)_amp*100/AMPL;

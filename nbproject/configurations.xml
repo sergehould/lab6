@@ -31,8 +31,9 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../common</Elem>
-    <Elem>include</Elem>
     <Elem>../../common</Elem>
+    <Elem>.</Elem>
+    <Elem>include</Elem>
     <Elem>common</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>

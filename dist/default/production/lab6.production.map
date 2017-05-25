@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p24FJ128GA010 \
   -o \
-  dist/default/production/lab6.X.production.elf \
+  dist/default/production/lab6.production.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib/PIC24E \
@@ -38,7 +38,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/lab6.X.production.map \
+  -Map=dist/default/production/lab6.production.map \
   --report-mem \
   --memorysummary \
   dist/default/production/memoryfile.xml \
@@ -302,12 +302,12 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x15b5
+.debug_info       0x000000       0x15ad
  *(.debug_info)
- .debug_info      0x000000        0x275 build/default/production/main.o
- .debug_info      0x000275        0x62e build/default/production/initBoard.o
- .debug_info      0x0008a3        0x406 build/default/production/common/pmp_lcd.o
- .debug_info      0x000ca9        0x90c build/default/production/common/TickFast.o
+ .debug_info      0x000000        0x273 build/default/production/main.o
+ .debug_info      0x000273        0x62c build/default/production/initBoard.o
+ .debug_info      0x00089f        0x404 build/default/production/common/pmp_lcd.o
+ .debug_info      0x000ca3        0x90a build/default/production/common/TickFast.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x365
@@ -945,7 +945,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libpic30-elf.
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.31/bin/bin/../../lib\libc-elf.a
 END GROUP
-OUTPUT(dist/default/production/lab6.X.production.elf elf32-pic30)
+OUTPUT(dist/default/production/lab6.production.elf elf32-pic30)
 LOAD default_isr
 LOAD data_init
 

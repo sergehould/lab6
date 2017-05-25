@@ -46,21 +46,12 @@
 #include "include/public.h"
 #include "common/GenericTypeDefs.h"
 #include "common/tickFast.h"
+#include "include/ragbag.h"
 
 #include <stdio.h>
 //#define     PROFILE 
 //#define   TIMER_PROFILE 
 #define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
-
-//global and broadcast
-display_type    display={1,0,100,400,0};
-
-=======
-
-#include <stdio.h>
-
-#define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
-
 
 // Local global
 

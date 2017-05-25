@@ -1,5 +1,6 @@
 /**
  *  FileName:     main.c for student_2 PWM and timer development.
+ *                  2:51 PM
 
  *	
  *	Name: Embedded application design,  Lab 6

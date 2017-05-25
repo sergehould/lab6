@@ -1,5 +1,5 @@
 /**
- *  FileName:     main.c form team project including student_1 and  student_2.
+ *  FileName:     main.c for student_1  UI development
  *	
  *	Name: Embedded application design,  Lab 6
  *
@@ -25,35 +25,44 @@
       
  * * REVISION HISTORY:
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Author        	Date                Comments on this revision
+ * Author        	Date      	Comments on this revision
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Serge Hould      May 24 2017 v1.0    The team.X project is pushed to https://github.com/advanced-programming/lab4-marie-sylavain
- *                                      Team member will fork this project.
+ * Serge Hould      May 19 2017 v1.0     
  *
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
  
 //#include "..\common\pmp_lcd.h"
+#include "include/task.h"
 #include "include/initBoard.h"
 #include "include/public.h"
 #include "common/GenericTypeDefs.h"
+#include "common/tickFast.h"
 
 #include <stdio.h>
+
+#define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
 
 
 // Local global
 
 //global and broadcast
-display_type    display={1,0,100,400,0}; 
+display_type    display={1,0,100,400,0};
 unsigned char sinus[RESOL], sawtooth[RESOL], square[RESOL];
 
 int main( void)
 {
 	OSCILLATOR_Initialize();
     initIO();
-	
+	TickInit();			// initializes the tick function
+    LCDInit();  
+    LCDClear(); 
+    display.flag =1;       
+    // main loop
     while(1){
-
+       displayTask(); 
+       decodeRepeatTask();
+       countSecTask();
     }// end while(1))
 
 }// main

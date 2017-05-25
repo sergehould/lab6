@@ -1,7 +1,5 @@
 #include "include/initBoard.h"
 #include "include/public.h"
-//#include "include/task.h"
-
 
 // CONFIG2
 #pragma config POSCMOD = NONE    // Primary Oscillator Select->Primary oscillator disabled
@@ -22,6 +20,7 @@
 #pragma config GCP = OFF    // General Code Segment Code Protect->Code protection is disabled
 #pragma config JTAGEN = OFF    // JTAG Port Enable->JTAG port is enabled
 
+extern unsigned char sinus[RESOL], sawtooth[RESOL], square[RESOL];
 void OSCILLATOR_Initialize(void)
 {
     // NOSC FRCPLL; SOSCEN disabled; OSWEN Switch is Complete; 
@@ -38,9 +37,45 @@ void OSCILLATOR_Initialize(void)
 	output:
 
 */
-void initIO(void){
-    _TRISA0=0;            
+void initTimer3( void)
+{
+    // init the timebase
+    T3CON = 0x8000;         // enable TMR3, prescale 1:1, internal clock
+    PR3 = RESOL-1;            // set the period for the given bitrate: PWM frequency = fcy/PR3 (e.g. 16MHz/64=250kHz)
+    _T3IF = 0;              // clear interrupt flag
+  //  _T3IE = 1;              // enable TMR3 interrupt
 
+} 
+
+
+/*
+	Function that set timer 2 to stream out the waveform at
+	at timer2 frequency.
+	input: 
+	output:
+
+*/
+void initTimer2( void)
+{
+// Initialize and enable Timer2
+	T2CONbits.TON = 0; // Disable Timer
+	T2CONbits.TCS = 0; // Select internal instruction cycle clock
+	T2CONbits.TGATE = 0; // Disable Gated Timer mode
+	T2CONbits.TCKPS = 0b00; // Select 1:1 Prescaler
+	TMR2 = 0x00; // Clear timer register
+	//PR2=RESOL-1; // Load the period value. It specifies waveform frequency: (fcy/(PR2+1))/RESOL (e.g. 16MHZ/64/64= 3.9kHz)
+	PR2=0xfff;
+    _T2IP = 0x01; // Set Timer 2 Interrupt Priority Level
+	_T2IF = 0; // Clear Timer 2 Interrupt Flag
+	IEC0bits.T2IE = 1; // Enable Timer 2 interrupt
+    _T2IP = 6; // Enable Timer 2 interrupt
+	T2CONbits.TON = 1; // Start Timer             
+
+} // initAudio
+
+
+void initIO(void){
+    _TRISA0=0;
     _TRISA1=0;
     _TRISD6=1;
     _TRISD13=1;
@@ -48,6 +83,28 @@ void initIO(void){
     _TRISD7=1;
     _TRISG13=0;
     _TRISG12=0;
-    _TRISG15=0;
+       _TRISG15=0;
  
+}
+void initOC( void)
+{
+    // init PWM
+    // set the initial duty cycles
+    OC1R = OC1RS = 25;  
+    // activate the PWM modules 
+    OC1CON = 0x000E;        // CH1 and CH2 in PWM mode, TMR3 based
+
+} 
+
+void initWave(int _amp){
+		int i=0;
+		for(i=0;i<RESOL;i++){//square LUT
+			if(i>=RESOL/2)	square[i]=_amp;
+			else square[i]=0;
+		}
+
+		for(i=0;i<RESOL;i++){
+			sinus[i]=(_amp/2)*sin(TWO_PI*i/RESOL)+(_amp/2);//Sinus wave formula
+			sawtooth[i]=((long)i*_amp)/RESOL;//Sawtooth wave
+		}
 }

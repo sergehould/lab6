@@ -21,5 +21,6 @@ void initTimer3( void);
 void initTimer2( void);
 void initIO(void);
 void initOC( void);
+void initWave(int);
 
 #endif

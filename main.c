@@ -1,5 +1,6 @@
 /**
  *  FileName:     main.c for student_2 PWM and timer development.
+ *                  2:51 PM
 
  *	
  *	Name: Embedded application design,  Lab 6
@@ -45,21 +46,12 @@
 #include "include/public.h"
 #include "common/GenericTypeDefs.h"
 #include "common/tickFast.h"
+#include "include/ragbag.h"
 
 #include <stdio.h>
 //#define     PROFILE 
 //#define   TIMER_PROFILE 
 #define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
-
-//global and broadcast
-display_type    display={1,0,100,400,0};
-
-=======
-
-#include <stdio.h>
-
-#define 	_ISR_NO_PSV 	__attribute__((__interrupt__, no_auto_psv))
-
 
 // Local global
 
@@ -113,14 +105,11 @@ int main( void)
     initIO();
 	TickInit();			// initializes the tick function
 
-    LCDInit();  
-    LCDClear(); 
-    display.flag =1;       
+  
+    int sol = add (1,2);
     // main loop
     while(1){
-       displayTask(); 
-       decodeRepeatTask();
-       countSecTask();
+
     }// end while(1))
 
 

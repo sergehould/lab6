@@ -9,7 +9,7 @@ extern unsigned char sinus[RESOL], sawtooth[RESOL], square[RESOL];
 
 long TickGet_ms(void){
 	return TickGet()/(TIMER_FREQ/1000);
-   // added again
+   // added again  
 }
 
 void decodeRepeatTask(void) {

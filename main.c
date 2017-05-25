@@ -105,15 +105,11 @@ int main( void)
     initIO();
 	TickInit();			// initializes the tick function
 
-    LCDInit();  
-    LCDClear(); 
-    display.flag =1;   
+  
     int sol = add (1,2);
     // main loop
     while(1){
-       displayTask(); 
-       decodeRepeatTask();
-       countSecTask();
+
     }// end while(1))
 
 
